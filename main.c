@@ -39,14 +39,21 @@ void main() {
 	GPIO       = 0;
 	GIE  = 1;
 
-#define LED GP5
-	
+#define LED    GP5
+#define BUZZER GP2
+
 	// main loop
 	for (;;) {
+/*
 		LED = 1;
 		wait(100);
 		LED = 0;
 		wait(400);
+*/
+		BUZZER = 1;
+		wait(1);
+		BUZZER = 0;
+		wait(1);
 	}
 
 }
