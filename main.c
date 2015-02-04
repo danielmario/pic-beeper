@@ -6,10 +6,30 @@ static __code int __at(_CONFIG)
 	        & _PWRTE_ON
 	        & _MCLRE_OFF;
 
+void isr() __interrupt 0 {
+	T0IF = 0;
+	T0IE = 0;
+}
+
+void wait(int time_ms) {
+	static unsigned char t_adj = 50;
+	while (time_ms--) {
+		TMR0 = t_adj;
+		T0IE = 1;
+		OPTION_REG = 1;
+		while (T0IE) {
+			__asm
+				nop
+				nop
+				nop
+				nop
+			__endasm;
+		}
+		OPTION_REG = 0;
+	}
+}
+
 void main() {
-	int t;
-	int t_on  = 1000;
-	int t_off = 4000; 
 
 	// reset
 	OPTION_REG = 0;
@@ -17,14 +37,16 @@ void main() {
 	CMCON      = 0x07;
 	TRISIO     = 0;
 	GPIO       = 0;
+	GIE  = 1;
 
 #define LED GP5
 	
+	// main loop
 	for (;;) {
 		LED = 1;
-		for (t = 0; t < t_on;  ++t) ;
+		wait(100);
 		LED = 0;
-		for (t = 0; t < t_off; ++t) ;
+		wait(400);
 	}
 
 }

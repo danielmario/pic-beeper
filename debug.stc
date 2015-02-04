@@ -1,0 +1,2 @@
+load main.cod
+break e 0x00DE
