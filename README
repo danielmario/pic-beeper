@@ -1,0 +1,7 @@
+pic-beeper
+==========
+
+Sources for a simple PIC (12f675) tutorial for driving a LED, 
+a buzzer and using timer0 interrupts.
+
+2015, Daniel Lima (mail@tinyprog.tk)
