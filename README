@@ -1,7 +1,12 @@
 pic-beeper
 ==========
 
-Sources for a simple PIC (12f675) tutorial for driving a LED, 
-a buzzer and using timer0 interrupts.
+Sources for a simple PIC (12F675) tutorial for driving a LED, 
+a buzzer and using timer0 interrupts. Schematics included!
 
-2015, Daniel Lima (mail@tinyprog.tk)
+I use the Vdd self-starting circuit from the Microchip's 
+Tips 'n Tricks Manual for simple and battery-concious usage, 
+and the other pins (GP2 and GP5) to activate the LED and 
+a small speaker (R_L).
+
+2015, Daniel Lima (danielm@tinyhub.tk)
